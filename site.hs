@@ -20,7 +20,7 @@ main = hakyllWith config $ do
         compile $
           getResourceBody
                 >>= applyAsTemplate ctx
-                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= loadAndApplyTemplate "templates/indextemp.html" defaultContext
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
@@ -28,14 +28,17 @@ main = hakyllWith config $ do
     ----------------------------------------
     -- Publications
     create ["pubs/index.html"] $ do
-      let ctx = defaultContext <> allPubsContext
+      let ctx
+            = defaultContext
+            <> titleField "Publications"
+            <> allPubsContext
       route idRoute
       compile $ do
         makeItem mempty
         -- Body info
         >>= loadAndApplyTemplate "templates/pubs-archive.html" ctx
         -- Context site info
-        >>= loadAndApplyTemplate "templates/default.html" ctx
+        >>= loadAndApplyTemplate "templates/publications.html" ctx
         >>= relativizeUrls
 
     match "pubs/*" $ version "pub" $ do
