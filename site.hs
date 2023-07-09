@@ -14,31 +14,38 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "index.org" $ do
-        route $ setExtension "html"
-        compile $ pandocCompiler
-                >>= applyAsTemplate defaultContext
+    match "index.html" $ do
+        let ctx = defaultContext <> recentPubContext 5
+        route idRoute
+        compile $
+          getResourceBody
+                >>= applyAsTemplate ctx
                 >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
 
     ----------------------------------------
-    -- -- Projects
-    -- create ["projects/index.html"] $ do
-    --   let ctx = defaultContext <> allProjects
-    --   route idRoute
-    --   compile $ do
-    --     newItem
+    -- Publications
+    create ["pubs/index.html"] $ do
+      let ctx = defaultContext <> allPubsContext
+      route idRoute
+      compile $ do
+        makeItem mempty
+        -- Body info
+        >>= loadAndApplyTemplate "templates/pubs-archive.html" ctx
+        -- Context site info
+        >>= loadAndApplyTemplate "templates/default.html" ctx
+        >>= relativizeUrls
 
-    -- match "projects/*" $ version "projects" $ do
-    --   let ctx = defaultContext <> dateContext
-    --   route idRoute
-    --   compile $ do
-    --     pandocCompiler
-    --     >>= loadAndApplyTemplate "templates/pages.html" ctx
-    --     >>= loadAndApplyTemplate "templates/default.html" ctx
-    --     >>= relativizeUrls
+    match "pubs/*" $ version "pub" $ do
+      let ctx = defaultContext
+      route $ setExtension "html"
+      compile $ do
+        pandocCompiler
+        >>= loadAndApplyTemplate "templates/pubs.html" ctx
+        >>= loadAndApplyTemplate "templates/default.html" ctx
+        >>= relativizeUrls
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
@@ -57,10 +64,16 @@ config = defaultConfiguration
 -- Context building stuff
 
 -- Loading stuff
-loadStuff :: String -> Compiler [Item String]
-loadStuff str = loadAll ("" .&&. hasVersion str)
+loadPubs :: Compiler [Item String]
+loadPubs = loadAll ("pubs/*" .&&. hasVersion "pub")
 
 mkListContext :: String -> Compiler [Item String] -> Maybe Int -> Context a
 mkListContext name clist mbn =
   listField name defaultContext $
   (recentFirst =<< clist) >>= \items -> return (maybe items (`take` items) mbn)
+
+allPubsContext :: Context String
+allPubsContext = mkListContext "pubs" loadPubs Nothing
+
+recentPubContext :: Int -> Context String
+recentPubContext = mkListContext "pubs" loadPubs . Just
