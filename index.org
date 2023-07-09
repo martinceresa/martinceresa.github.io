@@ -1,0 +1,56 @@
+---
+title: Home
+---
+
+* About me
+
+My name is Martín Ceresa and I am me.
+
+I do several things and some represent me more than others:
+
++ Capoeira (angola) with
+  [[https://www.facebook.com/CapoeiraMadrid/][Angoleros Sim Sinhó Madrid]] and [[http://www.capoeiraangolamadrid.es/][GCALV]].
++ Meditate, Yoga and Breadth.
++ Praud cat dad.
++ Got a PhD in Computer Science.
+
+* Research
+
+** Interests
+
+My interests include: theoretical computer science, programming languages
+theory, type theory, (a little bit of) category theory, mathematics and its foundations,
+topology and logic.
+Recently I have found myself studying the history of mathematics and philosophy of
+mathematics.
+
+** Publications
+
+To be published.
+
+** Research path
+
+*** Current Projects
+
+I am currently working on the application of formal methods to blockchain
+technologies in collaboration with [[https://software.imdea.org/~cesar/][Prof. César
+Sánchez]].
+
+Developing a *non*-turing complete language for embedded systems.
+
+*** Past history
+
+I did my PhD research at [[http://www.cifasis-conicet.gov.ar][CIFASIS]] under the guidance of [[http://www.fceia.unr.edu.ar/~mauro/][Dr. Mauro Jaskelioff]].  My
+thesis focused on Improvement Theory developed extensively by [[http://www.cse.chalmers.se/~dave/Homepage_David_Sands/Home.html][Prof. Sands]] early
+in the nineties.  The main goal of my thesis was to develop an effectful
+improvement theory, i.e. an improvement theory for languages with algebraic
+effects.
+
+Until 2015, I was a student in the Department of Computer Science at [[http://web.fceia.unr.edu.ar/][Universidad
+Nacional de Rosario]].
+
+In 2013, I did an intership at [[https://software.imdea.org/][IMDEA]] (Madrid, Spain) under the supervision of
+[[http://beschmi.net/][Benedikt Schmidt]], in the development of automatic tactics in [[https://www.easycrypt.info/trac/][EasyCrypt]]. In this
+internship I  learned about Modern Cryptography Proofs, and a bit about tactic
+development. I developed an automatic tactic (or *megatactic*) which implemented
+a *classic* cryptography step called *optimistic sampling*.

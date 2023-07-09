@@ -3,7 +3,6 @@
 import           Data.Monoid (mappend)
 import           Hakyll
 
-
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
@@ -15,49 +14,31 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-    match "posts/*" $ do
+    match "index.org" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= relativizeUrls
-
-    create ["archive.html"] $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
-                    defaultContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
-
-
-    match "index.html" $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
-
-            getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= applyAsTemplate defaultContext
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
 
+    ----------------------------------------
+    -- -- Projects
+    -- create ["projects/index.html"] $ do
+    --   let ctx = defaultContext <> allProjects
+    --   route idRoute
+    --   compile $ do
+    --     newItem
+
+    -- match "projects/*" $ version "projects" $ do
+    --   let ctx = defaultContext <> dateContext
+    --   route idRoute
+    --   compile $ do
+    --     pandocCompiler
+    --     >>= loadAndApplyTemplate "templates/pages.html" ctx
+    --     >>= loadAndApplyTemplate "templates/default.html" ctx
+    --     >>= relativizeUrls
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
@@ -71,3 +52,15 @@ config :: Configuration
 config = defaultConfiguration
   { destinationDirectory = "docs"
   }
+
+----------------------------------------
+-- Context building stuff
+
+-- Loading stuff
+loadStuff :: String -> Compiler [Item String]
+loadStuff str = loadAll ("" .&&. hasVersion str)
+
+mkListContext :: String -> Compiler [Item String] -> Maybe Int -> Context a
+mkListContext name clist mbn =
+  listField name defaultContext $
+  (recentFirst =<< clist) >>= \items -> return (maybe items (`take` items) mbn)
