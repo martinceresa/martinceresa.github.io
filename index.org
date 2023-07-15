@@ -5,11 +5,10 @@ title: Home
 * About me
 
 My name is Martín Ceresa and I am me.
-
 I do several things and some represent me more than others:
 
 + Capoeira (angola) with
-  [[https://www.facebook.com/CapoeiraMadrid/][Angoleros Sim Sinhó Madrid]] and [[http://www.capoeiraangolamadrid.es/][GCALV]].
+  [https://www.facebook.com/capoeiramadrid/][Angoleros Sim Sinhó Madrid]] and [http://www.capoeiraangolamadrid.es/][GCALV]].
 + Meditate, Yoga and Breadth.
 + Praud cat dad.
 + Got a PhD in Computer Science.
