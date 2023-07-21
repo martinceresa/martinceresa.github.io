@@ -1,13 +1,14 @@
 <article>
   <header>
-    <h2>$title$</h2>
-    <p>
-      $authors$
-      <br /> $venue$($year$)
-    </p>
-    </header>
+    <hgroup>
+      <h2>$title$</h2>
+      $authors$<br/>$venue$($year$)
+    </hgroup>
+  </header>
   <h3>Abstract</h3>
   $body$
-
+  <footer>
   $if(cite)$ <a href="$cite$">Cite</a>$endif$
+  $if(arxiv)$ <a href="$arxiv$">arXiv</a>$endif$
+  </footer>
 </article>

@@ -38,7 +38,7 @@ main = hakyllWith config $ do
       compile $ do
         pandocCompiler
         >>= loadAndApplyTemplate "templates/pubs.html" ctx
-        >>= loadAndApplyTemplate "templates/default.html" ctx
+        >>= loadAndApplyTemplate "templates/indextemp.html" ctx
         >>= relativizeUrls
 
     ----------------------------------------
