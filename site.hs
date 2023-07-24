@@ -58,6 +58,16 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/indextemp.html" ctx
                 >>= relativizeUrls
 
+    -- Extremely similar to index but showing my homepage :shrug:
+    match "homepage.html" $ do
+      let ctx = defaultContext
+      route idRoute
+      compile $
+          getResourceBody
+                >>= applyAsTemplate ctx
+                >>= loadAndApplyTemplate "templates/indextemp.html" ctx
+                >>= relativizeUrls
+
     match "templates/*" $ compile templateBodyCompiler
 
 
