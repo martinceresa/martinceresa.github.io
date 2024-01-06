@@ -51,8 +51,6 @@ main = hakyllWith config $ do
 
     ----------------------------------------
     -- Index
-    -- (toUrl . fromMaybe "filePath" <$> getRoute (fromFilePath "pubs/ceresa.multi.22.md")) >>= \multiUrl ->
-
     match "index.html" $ do
         -- let ctx multi = defaultContext <> recentPubContext 5 <> constField "multi" multi
         let ctx = defaultContext <> recentPubContext 5 <> addMulti
@@ -62,6 +60,22 @@ main = hakyllWith config $ do
                 >>= applyAsTemplate ctx
                 >>= loadAndApplyTemplate "templates/indextemp.html" ctx
                 >>= relativizeUrls
+
+    -- Contact
+    match "contact.html" $ do
+      route (constRoute "contact/index.html")
+      compile $
+        getResourceBody
+         >>= loadAndApplyTemplate "templates/indextemp.html" defaultContext
+         >>= relativizeUrls
+
+    -- Others
+    match "keyboards.html" $ do
+      route (constRoute "keyboards/index.html")
+      compile $
+        getResourceBody
+         >>= loadAndApplyTemplate "templates/indextemp.html" defaultContext
+         >>= relativizeUrls
 
     -- Extremely similar to index but showing my homepage :shrug:
     match "homepage.html" $ do
