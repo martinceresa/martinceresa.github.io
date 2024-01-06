@@ -8,6 +8,9 @@ import           Data.Maybe
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
+    ----------------------------------------
+    -- Moving images and css files, making them observables for everyone.
+
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -50,9 +53,6 @@ main = hakyllWith config $ do
         let ctx = defaultContext <> recentPubContext 5 <> addMulti
         route idRoute
         compile $
-          -- (load (setVersion (Just "pub") $ fromFilePath "pubs/ceresa.multi.22.md") :: Compiler (Item String))
-          -- >>=  (toUrl . fromMaybe "#" <$>) . getRoute . itemIdentifier
-          -- >>= \multiUrl ->
           getResourceBody
                 >>= applyAsTemplate ctx
                 >>= loadAndApplyTemplate "templates/indextemp.html" ctx
