@@ -19,6 +19,11 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
+    -- CName ceresa.ar
+    match "CNAME" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     ----------------------------------------
     -- Publications
     create ["pubs/index.html"] $ do
