@@ -44,7 +44,7 @@ main = hakyllWith config $ do
         >>= loadAndApplyTemplate "templates/indextemp.html" ctx
         >>= relativizeUrls
 
-    match "pubs/*" $ version "pub" $ do
+    match "pubs/*.md" $ version "pub" $ do
       let ctx = defaultContext
       route $ setExtension "html"
       compile $ do
