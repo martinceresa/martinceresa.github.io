@@ -1,5 +1,5 @@
 ---
-title: "Monitoring the Future of Smarat Contracts"
+title: "Monitoring the Future of Smart Contracts"
 authors: Margarita Capretto, Martín Ceresa and César Sánchez
 year: 2024
 venue: Fundamental Approaches to Software Engineering
