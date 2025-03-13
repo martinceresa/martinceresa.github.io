@@ -2,6 +2,7 @@
 title: klytius
 year: 2015
 date: 2015-04-01
+description: "Haskell -- GHC parallel programs execution observer."
 ---
 
 #### Klytius

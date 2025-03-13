@@ -2,6 +2,7 @@
 title: EasyCrypt
 year: 2013
 date: 2013-03-10
+description: "Computer-Aided Cryptographic Proofs."
 ---
 
 I did an internship at IMDEA Software under the supervision of Gilles Barthe and Benedikt Schimdt.

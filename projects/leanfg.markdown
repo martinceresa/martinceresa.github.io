@@ -2,6 +2,7 @@
 title: Lean Games
 year: 2024
 date: 2024-12-10
+description: "Mechanization of Fraud Proof Arbitration games in Lean4. Digital Twin of players."
 ---
 
 This a current project I am working at [Arbitration Games Proofs](https://gitlab.software.imdea.org/martin.ceresa/leanfpgames).
