@@ -1,0 +1,14 @@
+---
+title: Multi Formal Playground
+date: 2022-10-06
+---
+
+[Multi](https://gitlab.software.imdea.org/martin.ceresa/multi) is a small Coq
+Library implementing (a probably outdated) Tezos computation model. We were
+playing with several additional mechanisms that could have been added to the blockchain
+and we wanted to see (and prove) how these mechanisms would impact contract interactions.
+
+We also believed that attacks (or exploits) came from the interaction of
+(provably) correct smart contracts at the interface definition level.  In other
+words, we wanted to see how interaction breaks smart contracts implicit
+protocols or assumptions.
