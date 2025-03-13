@@ -3,7 +3,9 @@ $for(pubs)$
   <header>
     <a href="$url$">$title$ ($year$)</a>
   </header>
-  $authors$ <br />$venue$
+  $if(authors)$
+    $authors$ <br />$venue$
+  $endif$
   <footer>
     $if(cite)$ <a href="$cite$">Cite</a>$endif$
     $if(arxiv)$ <a href="$arxiv$">ArXiv</a>$endif$

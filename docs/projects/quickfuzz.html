@@ -10,7 +10,7 @@
 
         <link rel="stylesheet" href="../css/pico.min.css" />
 
-        <title>Martin - Transaction Monitoring of Smart Contracts</title>
+        <title>Martin - QuickFuzz</title>
     </head>
     <body>
         <header class="container padding-medium">
@@ -39,32 +39,21 @@
             <article>
   <header>
     <hgroup>
-      <h2>Transaction Monitoring of Smart Contracts</h2>
-      Margarita Capretto, Martín Ceresa and César Sánchez<br />International Conference on Runtime Verification(2022)
+      <h2>QuickFuzz -- 2017 </h2>
     </hgroup>
   </header>
-  <h3>Abstract</h3>
-  <p>Blockchains are modern distributed systems that provide decentralized financial
-capabilities with trustable guarantees. Smart contracts are programs written in
-specialized programming languages running on a blockchain and govern how tokens
-and cryptocurrency are sent and received. Smart contracts can invoke other
-contracts during the execution of transactions initiated by external users.</p>
-<p>Once deployed, smart contracts cannot be modified and their pitfalls can cause
-malfunctions and losses, for example by attacks from malicious users. Runtime
-verification is a very appealing technique to improve the reliability of smart
-contracts. One approach consists of specifying undesired executions (never
-claims) and detecting violations of the specification on the fly. This can be
-done by extending smart contracts with additional instructions corresponding to
-monitor specified properties, resulting in an onchain monitoring approach.</p>
-<p>In this paper, we study transaction monitoring that consists of detecting
-violations of complete transaction executions and not of individual operations
-within transactions. Our main contributions are to show that transaction
-monitoring is not possible in most blockchains and propose different execution
-mechanisms that would enable transaction monitoring.</p>
-  <footer>
-   <a href="https://link.springer.com/chapter/10.1007/978-3-031-17196-3_9">Cite</a>
-  
-  </footer>
+  <h4 id="quickfuzz">QuickFuzz</h4>
+<p><a href="https://github.com/CIFASIS/QuickFuzz">QuickFuzz</a> is an abandoned project. It is a tool written in Haskell
+designed for testing un-expected inputs of common file formats on third-party
+software, taking advantage of off-the-shelf, well known fuzzers. Unlike other
+generational fuzzers, QuickFuzz <strong>does not</strong> require to write specifications for the
+file formats in question since it relies on existing file-format-handling
+libraries available on the Haskell code repository.</p>
+<h4 id="megadeth">MegaDeTH</h4>
+<p><a href="https://github.com/CIFASIS/Megadeth">MegaDeTh</a> is an abandoned project, spin-off of QuickFuzz.
+Mega Derivation TH (MegaDeTh) gives the user an aggressive way to derive
+instances for all the intermediate nested types that are needed to make the
+top-level instance work.</p>
 </article>
 
         </main>

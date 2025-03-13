@@ -1,6 +1,7 @@
 ---
 title: QuickFuzz
-date: 2017-01-01
+year: 2017
+date: 2017-03-01
 ---
 #### QuickFuzz
 

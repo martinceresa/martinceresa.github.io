@@ -1,6 +1,7 @@
 ---
 title: Modelica
-date: 2016-01-01
+year: 2016
+date: 2016-09-22
 ---
 #### Modelica Modular Compiler
 

@@ -44,12 +44,36 @@ main = hakyllWith config $ do
         >>= loadAndApplyTemplate "templates/indextemp.html" ctx
         >>= relativizeUrls
 
+    -- List of projects
+    create ["projects/index.html"] $ do
+      let ctx
+            = defaultContext
+            <> titleField "Projects"
+            <> allProjectContext
+      route idRoute
+      compile $ do
+        makeItem mempty
+        -- Body info
+        >>= loadAndApplyTemplate "templates/project-archive.html" ctx
+        -- Context site info
+        >>= loadAndApplyTemplate "templates/indextemp.html" ctx
+        >>= relativizeUrls
+
     match "pubs/*.md" $ version "pub" $ do
       let ctx = defaultContext
       route $ setExtension "html"
       compile $ do
         pandocCompiler
         >>= loadAndApplyTemplate "templates/pubs.html" ctx
+        >>= loadAndApplyTemplate "templates/indextemp.html" ctx
+        >>= relativizeUrls
+
+    match "projects/*.markdown" $ version "projects" $ do
+      let ctx = defaultContext
+      route $ setExtension "html"
+      compile $ do
+        pandocCompiler
+        >>= loadAndApplyTemplate "templates/projects.html" ctx
         >>= loadAndApplyTemplate "templates/indextemp.html" ctx
         >>= relativizeUrls
 
@@ -64,6 +88,14 @@ main = hakyllWith config $ do
                 >>= applyAsTemplate ctx
                 >>= loadAndApplyTemplate "templates/indextemp.html" ctx
                 >>= relativizeUrls
+
+    -- Projects
+    match "projects.html" $ do
+      route (constRoute "projects/index.html")
+      compile $
+        getResourceBody
+         >>= loadAndApplyTemplate "templates/indextemp.html" defaultContext
+         >>= relativizeUrls
 
     -- Contact
     match "contact.html" $ do
@@ -118,6 +150,9 @@ config = defaultConfiguration
 loadPubs :: Compiler [Item String]
 loadPubs = loadAll ("pubs/*" .&&. hasVersion "pub")
 
+loadProjs :: Compiler [Item String]
+loadProjs = loadAll ("projects/*" .&&. hasVersion "projects")
+
 mkListContext :: String -> Compiler [Item String] -> Maybe Int -> Context a
 mkListContext name clist mbn =
   listField name defaultContext $
@@ -132,8 +167,11 @@ addRouteField fn ident = field fn (const urlPath)
 addMulti :: Context a
 addMulti = addRouteField "multi" (setVersion (Just "pub") $ fromFilePath "pubs/ceresa.multi.22.md")
 
-allPubsContext :: Context String
-allPubsContext = mkListContext "pubs" loadPubs Nothing
+allContext :: String -> Compiler [Item String] -> Context String
+allContext str cmp = mkListContext str cmp Nothing
+
+allPubsContext = allContext "pubs" loadPubs
+allProjectContext = allContext "projects" loadProjs
 
 recentPubContext :: Int -> Context String
 recentPubContext = mkListContext "pubs" loadPubs . Just

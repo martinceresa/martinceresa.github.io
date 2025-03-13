@@ -1,6 +1,7 @@
 ---
 title: Lean Games
-date: 2024-12-00
+year: 2024
+date: 2024-12-10
 ---
 
 This a current project I am working at [Arbitration Games Proofs](https://gitlab.software.imdea.org/martin.ceresa/leanfpgames).

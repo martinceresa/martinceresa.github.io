@@ -1,6 +1,7 @@
 ---
 title: EasyCrypt
-date: 2013-03-15
+year: 2013
+date: 2013-03-10
 ---
 
 I did an internship at IMDEA Software under the supervision of Gilles Barthe and Benedikt Schimdt.
