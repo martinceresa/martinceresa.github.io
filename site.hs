@@ -153,6 +153,8 @@ loadPubs = loadAll ("pubs/*" .&&. hasVersion "pub")
 loadProjs :: Compiler [Item String]
 loadProjs = loadAll ("projects/*" .&&. hasVersion "projects")
 
+-- listContextWith
+
 mkListContext :: String -> Compiler [Item String] -> Maybe Int -> Context a
 mkListContext name clist mbn =
   listField name defaultContext $

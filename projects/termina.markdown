@@ -3,6 +3,7 @@ title: Termina -- Programming Language
 year: 2022
 date: 2022-03-10
 description: "Termina is a domain-specific language for real-time embedded systems aimed at simplifying their implementation and reducing validation and verification costs."
+keywords: Haskell, Compilers, Embedded Systems
 ---
 
 [Termina](https://github.com/termina-lang/termina)

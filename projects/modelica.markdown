@@ -3,6 +3,7 @@ title: Modelica
 year: 2016
 date: 2016-09-22
 description: "Modular Compiler implementation for Modelica (unfinished)."
+keywords: Haskell, Modular Compilers
 ---
 #### Modelica Modular Compiler
 

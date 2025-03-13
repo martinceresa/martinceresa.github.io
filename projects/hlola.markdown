@@ -3,6 +3,7 @@ title: HLola
 year: 2019
 date: 2019-10-05
 description: "Stream Runtime Verification Engine implemented en Haskell borrowing (some) Haskell Data Types as Data Theories."
+keywords: Haskell, Stream Runtime Verification
 ---
 #### HLola
 

@@ -3,6 +3,7 @@ title: QuickFuzz
 year: 2017
 date: 2017-03-01
 description: "Arbitrarily generation of stuff following Haskell Data Types."
+keywords: Haskell, Property-Based Testing, Test Generation
 ---
 #### QuickFuzz
 
